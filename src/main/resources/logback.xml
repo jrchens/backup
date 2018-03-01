@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- <property name="LOG_HOME" value="${logback.file.path}" /> -->
+	<!-- <property resource="config.properties" /> -->
+
+<!-- 	<appender name="FILE" -->
+<!-- 		class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>/usr/local/var/log/backup.log</file> -->
+<!-- 		<rollingPolicy -->
+<!-- 			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy"> -->
+<!-- 			<fileNamePattern>/usr/local/var/log/backup.%i.%d{yyyyMMdd}.log.zip</fileNamePattern> -->
+<!-- 			<maxFileSize>100MB</maxFileSize> -->
+<!-- 			<maxHistory>31</maxHistory> -->
+<!-- 			<totalSizeCap>3GB</totalSizeCap> -->
+<!-- 		</rollingPolicy> -->
+<!-- 		<encoder> -->
+<!-- 			<pattern>%-4r %d %-5level %logger{36} - %msg%n</pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+<!-- 	<appender name="FILE" -->
+<!-- 		class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>/usr/local/var/log/backup.log</file> -->
+<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"> -->
+<!-- 			<fileNamePattern>/usr/local/var/log/backup.%i.log.zip</fileNamePattern> -->
+<!-- 			<minIndex>1</minIndex> -->
+<!-- 			<maxIndex>31</maxIndex> -->
+<!-- 		</rollingPolicy> -->
+<!-- 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"> -->
+<!-- 			<maxFileSize>100MB</maxFileSize> -->
+<!-- 		</triggeringPolicy> -->
+<!-- 		<encoder> -->
+<!-- 			<pattern>%-4r %d %-5level %logger{36} - %msg%n</pattern> -->
+<!-- 		</encoder> -->
+<!-- 	</appender> -->
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/usr/local/var/log/backup.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/var/log/backup.%d{yyyyMMdd}.log.zip</fileNamePattern>
+			<maxHistory>31</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-4r %d %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4r %d %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" 
+		level="DEBUG"/> -->
+	<!-- <logger name="java.sql" level="DEBUG" /> -->
+	<!-- <logger name="org.hibernate.SQL" level="DEBUG" /> -->
+	<!-- <logger name="org.hibernate.type" level="TRACE" /> -->
+	<!-- <logger name="org.springframework.jdbc.core" level="DEBUG" /> -->
+	<!-- <logger name="org.springframework.jdbc.core.namedparam" level="DEBUG" 
+		/> -->
+	<!-- <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" 
+		level="DEBUG"/> -->
+
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+	</root>
+	<!-- <root level="DEBUG"> -->
+	<!-- <appender-ref ref="STDOUT" /> -->
+	<!-- </root> -->
+</configuration>
