@@ -19,7 +19,7 @@ public class OSSUpload {
 
 	private static String accessKeyId = "$accessKeyId";
 	private static String accessKeySecret = "$accessKeySecret";
-	private static String bucketName = "$bucketName";
+	// private static String bucketName = "$bucketName";
 
 	 private static String endpoint =
 	 "http://oss-cn-shanghai-internal.aliyuncs.com";
@@ -50,7 +50,7 @@ public class OSSUpload {
 				} else {
 					key = prefix.concat("-").concat(String.valueOf(dayOfWeek).concat(key.substring(key.length() - 7)));
 				}
-				upload(filename, dir.concat("/").concat(key));
+				upload(filename, dir,key);
 			}
 		} catch (Exception e) {
 			logger.error("main error", e);
@@ -58,7 +58,7 @@ public class OSSUpload {
 		System.exit(0);
 	}
 
-	public static void upload(String uploadFile, String key) {
+	public static void upload(String uploadFile, String bucketName, String key) {
 		OSSClient ossClient = null;
 
 		try {
